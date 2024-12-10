@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="atm-container">
+      <h1>ATM App</h1>
+      
+        <p id="message">Balance is hidden</p>
+      </div>
+      <div class="actions">
+        <button onclick="checkBalance()" class="balanceCheck">
+          Check Balance
+        </button>
+        <button onclick="showDeposit()">Deposit</button>
+        <button onclick="showWithdraw()">Withdraw</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+      <div class="extra" id="extra"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
