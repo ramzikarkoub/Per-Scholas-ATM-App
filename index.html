@@ -9,15 +9,15 @@
   <body>
     <div class="atm-container">
       <h1>ATM App</h1>
-      
+      <div id="screen">
         <p id="message">Balance is hidden</p>
       </div>
       <div class="actions">
         <button onclick="checkBalance()" class="balanceCheck">
           Check Balance
         </button>
-        <button onclick="showDeposit()">Deposit</button>
-        <button onclick="showWithdraw()">Withdraw</button>
+        <button onclick="showDeposit('deposit')">Deposit</button>
+        <button onclick="showDeposit('withdrawal')">Withdraw</button>
         <button onclick="logout()">Logout</button>
       </div>
       <div class="extra" id="extra"></div>
