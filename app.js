@@ -21,8 +21,9 @@ const checkBalance = () => {
 // Logs the user out after a delay
 const logout = () => {
   setTimeout(() => {
+    clearDiv();
     message.textContent = `You are logged out`;
-  }, 2000);
+  }, 1000);
 };
 
 // Displays deposit or withdrawal options
