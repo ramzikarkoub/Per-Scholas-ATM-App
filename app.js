@@ -5,7 +5,6 @@ console.log(extra);
 
 let balance = 10000;
 const checkBalance = () => {
-  console.log(balance);
   if (message.textContent === "Balance is hidden") {
     updateDisplay(balance);
     balanceCheck.classList.add("balanceChecked");
@@ -23,7 +22,6 @@ const logout = () => {
   }, 2000);
 };
 depositAmounts = [10, 20, 30, 40, 50, 100, 200, 300, 400, 500];
-withdrawalAmounts = [-10, -20, -30, -40, -50, -100, -200, -300, -400, -500];
 const showDeposit = (type) => {
   if (type == "deposit") {
     const newDiv =
@@ -33,21 +31,23 @@ const showDeposit = (type) => {
       `
         )
         .join("") +
-      `<p>cutom amount</p><input type="text" name="" id="customAmount" placeholder="Enter amount" /></br>
-      <button type="submit" onClick="submitCustomAmount()">submit</button>`;
+      `<p>cutom amount</p><input type="text" name="" id="customAmount" placeholder="Enter amount"/></br>
+      <button type="submit" onClick="submitCustomAmountDeposite()">submit</button>`;
 
     // Combine buttons into a single string
     extra.innerHTML = newDiv; // Add buttons to the 'extra' div
-  } else if (type == "deposit") {
+  } else if (type == "withdrawal") {
     const newDiv =
-      withdrawalAmounts
+      depositAmounts
         .map(
-          (amount) => `<button onclick="deposit(${amount})">$${amount}</button>
+          (
+            amount
+          ) => `<button onclick="deposit(${-amount})">- $${amount}</button>
       `
         )
         .join("") +
-      `<p>cutom amount</p><input type="text" name="" id="customAmount" placeholder="Enter amount" /></br>
-      <button type="submit" onClick="submitCustomAmount()">submit</button>`;
+      `<p>cutom amount</p><input type="text" name="" id="customAmount" placeholder="- Enter amount"  /></br>
+      <button type="submit" onClick="submitCustomAmountWithdrawal()">submit</button>`;
 
     // Combine buttons into a single string
     extra.innerHTML = newDiv; // Add buttons to the 'extra' div
@@ -71,7 +71,7 @@ const showWithdraw = () => {
   showDeposit();
 };
 
-const submitCustomAmount = () => {
+const submitCustomAmountDeposite = () => {
   const customAmountInput = document.querySelector("#customAmount");
   const customAmount = parseFloat(customAmountInput.value);
 
@@ -82,19 +82,24 @@ const submitCustomAmount = () => {
   // console.log(customAmount);
   deposit(customAmount);
 };
+const submitCustomAmountWithdrawal = () => {
+  const customAmountInput = document.querySelector("#customAmount");
+  const customAmount = parseFloat(-customAmountInput.value);
 
-const deposit = (amount) => {
-  if (amount > 0) {
-    console.log(balance);
-    balance += amount;
-    updateDisplay(balance);
-    console.log(balance);
-  } else {
-    console.log(balance);
-    balance -= amount;
-    updateDisplay(balance);
-    console.log(balance);
+  if (isNaN(customAmount)) {
+    alert("Please enter a valid positive number.");
+    return;
   }
+  // console.log(customAmount);
+  deposit(customAmount);
+};
+const deposit = (amount) => {
+  console.log(amount);
+
+  balance += amount;
+
+  updateDisplay(balance);
+  console.log(balance);
 };
 const updateDisplay = (newBalance) => {
   message.textContent = `Your current balance is $${newBalance}.`;
