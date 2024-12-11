@@ -10,15 +10,22 @@
     <div class="atm-container">
       <h1>ATM App</h1>
       <div id="screen">
-        <p id="message">Balance is hidden</p>
+        <p id="message" class="screen-message">Balance is hidden</p>
       </div>
       <div class="actions">
         <button onclick="checkBalance()" class="balanceCheck">
           Check Balance
         </button>
-        <button onclick="showDeposit('deposit')">Deposit</button>
-        <button onclick="showDeposit('withdrawal')">Withdraw</button>
-        <button onclick="logout()">Logout</button>
+        <button onclick="showTransactionOptions('deposit')" class="btn deposit">
+          Deposit
+        </button>
+        <button
+          onclick="showTransactionOptions('withdrawal')"
+          class="btn withdraw"
+        >
+          Withdraw
+        </button>
+        <button onclick="logout()" class="btn logout">Logout</button>
       </div>
       <div class="extra" id="extra"></div>
     </div>
